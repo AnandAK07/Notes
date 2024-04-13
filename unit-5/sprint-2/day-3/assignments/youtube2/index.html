@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/dd524d7ede.js" crossorigin="anonymous"></script>
+    <style>
+        #Navbar{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 50px;
+            background-color: #ffffff;
+        }
+        #Navbar>#ldiv>img{
+            height: 100%;
+            width: 100%
+            /*  */
+            /* https://betanews.com/wp-content/uploads/2017/08/new-youtube-logo.jpg */
+        }
+        #Navbar>#ldiv{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-left: 30px;
+            font-size: 30px;
+        }
+        #Navbar>#mdiv{
+            border-radius: 5px 5px 5px 5px;
+            align-items: center;
+        }
+        #Navbar>#mdiv>input{
+            /* padding: 10px 200px; */
+            height: 39px;
+            width: 500px;
+            border-radius: 30px 0  0 30px;
+        }
+        #Navbar>#mdiv>button{
+            padding: 10px 20px;
+            
+            border-top-right-radius:45%;
+            border-bottom-right-radius:45%;
+            margin-left: -10px;
+        }
+        #Navbar>#rdiv{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-right: 30px;
+        }
+        #Navbar>#rdiv>img{
+            height: 100%;
+            width: 100%
+            /*  */
+            /* https://betanews.com/wp-content/uploads/2017/08/new-youtube-logo.jpg */
+        }
+        #Navbar>#rdiv>i{
+            margin:0 20px 0 20px;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+    </style>
+</head>
+<body>
+    <nav id="Navbar">
+        <div id="ldiv"><img src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png" alt="">YouTube</i></div>
+        <div id="mdiv">
+            <input id="seachIp" type="search" placeholder="Search" id="search">
+            <button id="seachbtn"><i class="fa-solid fa-magnifying-glass"></i></button></i>
+        </div>
+        <div id="rdiv"><img src="https://cdn.icon-icons.com/icons2/2249/PNG/512/video_plus_outline_icon_139092.png" alt=""><i class="fa-regular fa-bell fa-2xl" style="color: #000000;"></i><i class="fa-regular fa-user fa-2xl" style="color: #000000;"></i></div>
+    </nav>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    displayPopular();
+    async function displayPopular(){
+        try{
+            let res=await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&order=videoCount&regionCode=IN&type=vedio&key=AIzaSyCBboUzuihMgjeOWEtOm3EXwu4ldhfe4a0`)
+            let data=await res.json();
+            console.log(data.items)
+            displayData(data.items)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
+
+
+
+
+    document.getElementById("seachbtn").addEventListener("click",searching);
+    
+    async function searching(){
+        let query=document.getElementById("seachIp").value;
+
+        try{
+            let respone=await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCBboUzuihMgjeOWEtOm3EXwu4ldhfe4a0`)
+            let data=await respone.json();
+            console.log(data.items)
+            displayData(data.items)
+        }catch(error){
+            console.log(error)
+            let errormsg=document.createElement("h3")
+            errormsg.textContent="Video Not Found!!!";
+            container.innerHTML=""
+            container.append(errormsg)
+        }
+    }
+    
+    function displayData(data){
+        let container=document.getElementById("container");
+        container.innerHTML="";
+        data.map(function(el){
+            let div=document.createElement("div");
+            let name=document.createElement("h3");
+            let image=document.createElement("img");
+            name.innerText=el.snippet.title
+            image.src=el.snippet.thumbnails.high.url
+            let videoId=el.id.videoId;
+            div.append(image,name)
+            image.addEventListener("click",()=>{
+                vedioplay(videoId);
+            })
+            container.append(div)
+        })
+
+    }
+
+    var Arr= JSON.parse(localStorage.getItem("videoId"))
+    function vedioplay(videoId){
+        localStorage.setItem("videoId",JSON.stringify(videoId));
+        window.location.href="youtubeVedio.html";
+    }
+</script>

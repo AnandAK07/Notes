@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-COMMERCE I</title>
+</head>
+<body>
+    <form>
+        <input id="name" type="text" placeholder="Product name" required>
+        <input id="category" type="text" placeholder="Category" required>
+        <input id="image" type="text" placeholder="Image Url" required>
+        <input id="price" type="number" placeholder="Price" required>
+        
+        <select name="" id="gender">
+            <option value="gender">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <input id="sold" type="text" value="false">
+        <button id="add">add</button>
+    </form>
+</body>
+</html>
+<script>
+    function ECommerceProduct(name,category,image,price,gender,sold){
+                this.name=name;
+                this.category=category;
+                this.image=image;
+                this.price=price;
+                this.gender=gender;
+                this.sold=sold;
+            }
+    let ProductsArr=JSON.parse(localStorage.getItem("Products"))||[];//string=array
+    document.getElementById("add").addEventListener("click",addProduct);
+    function addProduct(){
+        event.preventDefault();
+        let name=document.getElementById("name").value;
+        let category=document.getElementById("category").value;
+        let image=document.getElementById("image").value;
+        let price=document.getElementById("price").value;
+        let gender=document.getElementById("gender").value;
+        let sold=document.getElementById("sold").value;
+        
+        if (name==""||category==""||image==""||price==""||gender==""||sold==""){
+            alert("Fill all forms");
+        }
+        else{
+            // function ECommerceProduct(name,category,image,price,gender,sold){
+            //     this.name=name;
+            //     this.category=category;
+            //     this.image=image;
+            //     this.price=price;
+            //     this.gender=gender;
+            //     this.sold=sold;
+            // }
+            const newProduct=new ECommerceProduct(name,category,image,price,gender,sold);
+           
+            ProductsArr.push(newProduct);
+            localStorage.setItem("Products",JSON.stringify(ProductsArr));
+        }
+
+    }
+    
+</script>

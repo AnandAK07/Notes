@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcommerceII</title>
+    <style>
+        #totalProduct{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="counter"><h2></h2></div>
+    <div id="totalProduct"></div>
+</body>
+</html>
+<script>
+    let ProductsArr=JSON.parse(localStorage.getItem("Products"))||[];
+    displayProducts(ProductsArr);
+    function displayProducts(ProductsArr){
+        let counter=document.getElementById("counter");
+
+        let totalProduct=document.getElementById("totalProduct");
+        totalProduct.innerHTML="";
+        ProductsArr.map(function(ele,i){
+            let div=document.createElement("div");
+
+            let name=document.createElement("h3");
+            name.textContent=ele.name;
+
+            let category=document.createElement("h4");
+            category.textContent=ele.category;
+
+            let image=document.createElement("img");
+            image.src=ele.image;
+            image.alt=ele.name;
+
+            let price=document.createElement("h3");
+            price.textContent=ele.price;
+
+            let sold=document.createElement("button");
+            sold.setAttribute("id","sold");
+            sold.textContent=ele.sold ? "sold":"Available";//200||1000;
+            sold.addEventListener("click",function(){
+                soldDisplay(i);
+            })
+
+            if(ele.sold){
+                sold.style.backgroundColor="red";
+            }
+            else{
+                sold.style.backgroundColor="green";
+            }
+            let remove=document.createElement("button");
+            remove.textContent="Remove";
+            remove.setAttribute("id","remove");
+            remove.addEventListener("click",()=>removeDisplay(i) );
+
+            div.append(image,name,category,price,sold,remove);
+            totalProduct.append(div);
+        })
+        // localStorage.setItem("Products",JSON.stringify(ProductsArr));
+        counter.textContent="Total Products: "+ProductsArr.length;
+    }
+    function removeDisplay(i){
+        ProductsArr.splice(i,1);
+        localStorage.setItem("Products",JSON.stringify(ProductsArr));
+        displayProducts(ProductsArr);
+    }
+    function soldDisplay(i){
+        ProductsArr[i].sold=!ProductsArr[i].sold;
+        localStorage.setItem("Products",JSON.stringify(ProductsArr));
+        displayProducts(ProductsArr);
+    }
+</script>

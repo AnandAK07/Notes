@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Movie App</title>
+    <style>
+      /* Write necessery styles here  */
+      #movie_container{
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        
+      }
+     
+      
+    </style>
+  </head>
+  <body>
+    <div id="serach">
+      <input type="text" id="search-inp" placeholder="Search"/>
+      <button id="search-btn">Search</button>
+    </div>
+    <div id="movie_container"></div>
+  </body>
+
+  <script>
+    // Write necessery JS here
+      document.getElementById("search-btn").addEventListener("click",searching)
+
+      
+      async function searching(){
+        let searchQuery=document.getElementById("search-inp").value;
+        // c018c3d9
+        try{
+          let respone=await fetch(`https://www.omdbapi.com/?apiKey=c018c3d9&s=${searchQuery}`)
+          let data=await respone.json();
+          console.log(data.Search)
+          displayMovie(data.Search);
+        }
+        catch(error){
+          displayError();
+          
+        }
+      }
+
+
+      function displayMovie(data){
+        let movie_container= document.getElementById("movie_container");
+        movie_container.innerHTML="";
+        data.forEach(function(el){
+          let div=document.createElement("div");
+          // div.setAttribute("id","movie_container")
+          let title=document.createElement("h2");
+          title.setAttribute("class","title")
+          let poster=document.createElement("img");
+          poster.setAttribute("class","poster")
+          poster.src=el.Poster;
+          title.innerText=el.Title;
+          div.append(poster,title)
+          movie_container.append(div);
+        })
+      }
+      
+      function displayError(){
+        let movie_container= document.getElementById("movie_container");
+        movie_container.innerHTML="";
+        let Error=document.createElement("h2");
+        Error.textContent=`Movie not found!`;
+        Error.setAttribute("class","error-container");
+        movie_container.append(Error);
+      }
+  </script>
+</html>

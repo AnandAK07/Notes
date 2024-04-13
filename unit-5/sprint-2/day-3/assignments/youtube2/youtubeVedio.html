@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #vd{
+            width: 640px;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+   <div id="Vid_Container"></div>
+</body>
+</html>
+<script>
+
+var Arr=JSON.parse(localStorage.getItem("videoId"))
+
+var iframe=document.createElement("iframe")
+iframe.style.width=100%
+iframe.setAttribute("id","vd")
+iframe.setAttribute("allowfullscreen",true)
+console.log(Arr)
+iframe.src=`https://www.youtube.com/embed/${Arr}`
+document.getElementById("Vid_Container").append(iframe)
+
+
+</script>
