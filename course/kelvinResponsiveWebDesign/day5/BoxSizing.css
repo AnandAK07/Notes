@@ -1,0 +1,25 @@
+/* *,*::before,*::after{box-sizing: border-box;} */
+*,*::before,*::after{box-sizing: inherit;}
+
+html{
+    box-sizing:border-box;
+}
+
+.content-box{
+    /* make size of that box adding all like border,padding */
+    box-sizing: content-box;
+    border: 1rem solid red;
+    width: 500px;
+}
+.scale{
+    width: 500px;
+    height: 50px;
+    background: #000;
+}
+.border-box{
+    /* box-sizing:border-box */
+    /* box-sizing: border-box; */
+    width: 500px;
+    padding: 25px;
+    border: 1rem solid red;
+}

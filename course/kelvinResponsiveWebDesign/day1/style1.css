@@ -1,0 +1,22 @@
+body{
+ margin: 0;
+}
+.parent{
+    /* width default 100% you bcs every element is block element*/
+    background: rgb(12, 12, 56);
+    padding: 50px;
+    margin: 0 auto;
+    width: 70%;
+    /* worst idea 
+    overflow: hidden;
+    */
+}
+.child{
+    background: skyblue;
+    /* Normal i would not include height but its just a getting started */
+    height: 250px;
+    /* width: 1800px; don't give width in px's its may overflow data*/ 
+    /* width of child is always relative to width of parent ex its 50% of 80% not 100% */
+    width: 50%;
+    /* small screen even breaks on height also so don't give height also */
+}

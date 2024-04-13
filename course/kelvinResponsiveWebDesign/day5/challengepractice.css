@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*,*::before,::after{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    background: #234243;
+    color: #fff;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    padding: 100px 0;
+}
+.hero{
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid red;
+    max-width:800px;
+}
+
+.content{
+    width: 50%;
+    border: 1px solid greenyellow;
+}
+
+.hero p{
+    margin-bottom: 3em;
+}
+.btn{
+    background: #38CfD9;
+    padding: .75em 1.25em;
+    border-radius: 100px;
+    /* perfectly round */
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #23424A;
+}
+.btn:hover,.btn:focus{
+    opacity: .75;
+    /* opacity is clear focus dout */
+}

@@ -1,0 +1,31 @@
+h1{
+    color: orangered;
+}
+.content{
+    margin: auto;
+    border: 1px solid black;
+    box-shadow: 0 0 3rem rgba(0,0,0,0.15);
+    /* width: 70%; */
+    /* take min value if more then 500px take 500px other wise take 70%*/
+    /* width: min(500px,70%); */
+    /* consider btw maximum value take that value if its less than 500px or near it will take 500px 
+     if more then 500px take 70%
+    */
+    /* width: max(500px,70%); */
+    /* width: max(200px,20%,50vh);not able to understand livite */
+}
+
+p{
+    /* background: lightblue; */
+    /* width: clamp(200px,50%,20rem); */
+    /* above 20rem 200px below 50% */
+
+    /* font-size: 2vw;not right */
+    /* font-size: calc(2vw + .5rem); */
+
+
+    /* font-size: calc(1vw + .5rem); */
+
+    font-size: clamp(2rem,5vw,5rem);
+    /* min mid max */
+}
