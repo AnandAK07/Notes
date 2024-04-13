@@ -1,0 +1,289 @@
+Relationships
+
+Relationship - It's a way two ore more people/things are connected/related to each other;
+
+
+In our context, the Relationship is between the data in our database;
+
+
+Maybe you(User) order food on zomato/swiggy;
+
+Users collection - where data of all the users who use zomato is present
+Orders collection - where data of all the orders that were made on zomato are present
+
+^ Relationship is required between the user and their orders;
+
+
+
+Types of Relationship
+
+1. One to one Relationship
+
+
+Students
+_id //auto generated
+student_id
+
+
+
+Marketers
+_id //auto generated
+employee_id
+years_of_experience
+previous_brands
+
+
+   //find all the people who's blood_group is b+ve and who are from pune
+
+   const elegible_students = studentmodel.find({blood_group : "b+ve", city : "pune"})
+
+
+
+Usually, the common data is stored in a separate collection
+
+
+**Users collection**
+_id // auto generated;
+name
+email
+age,
+blood_group
+phone_no
+city
+
+To discuss one-one Relationship : 
+
+Instructors
+_id //auto generated
+employee_id
+years_of_experience
+subject_expertise
+
+Should their be a relation between the Users collection and the Instructors collection?
+
+
+Yes, because Instructors collection will only have so much data : 
+
+InstructorsModel.find({employee_id : "masai-082"})
+
+_id : "aldfjadf"
+employee_id : "masai-082"
+years_of_experience : 2,
+subject_expertise : "backend"
+
+
+- Whenever we need to have a one to one Relationship
+
+  We can either put something unique(mostly the _id) from collection "A" in the other collection "B";
+
+ **Users collection (A)**
+    _id : "mnop" // auto generated;
+    name
+    email
+    age,
+    blood_group
+    phone_no
+    city
+  
+**Instructors collection (B)**
+    _id //auto generated
+    employee_id
+    years_of_experience
+    subject_expertise
+    user_id : "mnop"
+
+
+    Now if I query Instructors collection with employee_id : 
+
+    const instructor = InstructorsModel.find({employee_id : "masai-082"})
+
+        _id : "aldfjadf"
+        employee_id : "masai-082"
+        years_of_experience : 2,
+        subject_expertise : "backend"
+        user_id : "mnop"
+
+    Now with user_id we can query the Users collection to get other data 
+
+    Usermodel.find({_id : instructor.user_id})
+
+                            ********OR********
+
+
+  We can put something unique from collection "B" in the other collection "A";               
+  
+  **Users collection (A)**
+    _id : "mnop" // auto generated;
+    name
+    email
+    age,
+    blood_group
+    phone_no
+    city
+    instructor_id  : "pqrs"
+
+  
+**Instructors collection (B)**
+    _id : "pqrs" //auto generated
+    employee_id : "abc"
+    years_of_experience
+    subject_expertise
+    
+
+In case, like in most cases in one - one relationship, if it's just between two collections, any way is fine
+
+So finally in case of ONE - ONE relationship, 
+
+  We can either put something unique(mostly the _id) from collection "A" in the other collection "B";
+      ********OR********
+  We can put something unique from collection "B" in the other collection "A";  
+
+
+
+**One to Many relationship** 
+
+Examples : 
+Users and Orders collection in Zomato   
+Author and Blogs collection in a Blogging application
+
+How do we establish in this case?
+
+Users
+_id : "axy" //auto generated
+name,
+phone_no,
+city;
+
+
+Orders
+
+_id : "pqr" //auto generated
+items,
+veg/non-veg,
+total_discount
+total_price
+coupon_used
+user_id : "axy"
+
+_id : "afg" //auto generated
+items,
+veg/non-veg,
+total_discount
+total_price
+coupon_used
+user_id : "axy"
+
+To establish we can either 
+
+    1. Put user_id in the Orders collection
+
+                 OR
+
+    2. Put order_id in the Users collection
+
+Which way is better? in case of 1-Many relationship
+
+Both will work, but the preferred way is 1st way;
+
+
+
+
+
+Why not store both in the same/only_one collection?
+
+Users
+_id : "axy" //auto generated
+name,
+phone_no,
+city;
+orders : [{order1 data}, {order2 data}, {order3 data}......]
+
+
+Posts and Comments
+
+ONLY **Posts** collection
+_id,
+title,
+content,
+no_of_likes
+comments : [
+        {comment1 data}, 
+        {comment2 data}
+]
+
+
+Posts and it's no of comments for example : 
+
+Post_no -- no_of_comments
+    1 - 5
+    2 - 50
+    3 - 10
+    4 - 400
+    5 - 28,000
+    6 - 0
+    7 - 1000
+    8 - 800
+    9 - 45
+    10 - 1
+
+Post no 5, is slowing the entire query;
+
+Consider two scenarios, tell me which one is better User experience;
+
+1. Posts load instantly on the Feed, and when the user clicks on comments of a post, comment get visible then.
+                        OR
+2. It takes time on the feed for the posts to come, but when they come, the comments are ready for all the posts;
+
+
+1st way is better, that's one of the reason we don't store in same collection, we store in different collections
+
+
+**Posts** collection
+_id,
+title,
+content,
+no_of_likes
+
+**comments collection**
+_id,
+text,
+no_of_likes,
+post_id
+
+_id,
+text,
+no_of_likes
+post_id
+
+
+
+IN ONE - MANY Relationship, follow this formula/example to come up with relationship
+
+
+1. Identify which one is independent/parent or dependent/child
+2. Always it's preferred that we put the parent's id in the child
+        (Think of  school going kid and the parent, the child's ID card will have the phone_no of the parent)
+
+
+
+Posts and comments : 
+
+independent/parent - post
+dependent/child - comment;
+
+the comment will always have the id of the post;
+
+
+
+MANY - MANY relationship
+
+Both can be independent or both can be interdependent
+
+Anyway is fine 
+You can put A collection's ID in the B OR B collection's ID in the A - depending on your application ;
+
+
+Stackoverflow
+
+Questions - 1 question can have multiple tags
+Tags - 1 tag can belong to multiple questions

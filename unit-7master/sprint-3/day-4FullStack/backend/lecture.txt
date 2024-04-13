@@ -1,0 +1,30 @@
+full stack app
+tect stack:-frontend-React.js
+            backend-node.js
+
+but while working in a team?
+    -endpoints
+so both the team FE Y BE will start their work simultaneously
+
+first thing the BE devs will do:-
+1]decide what the API endpoints/routes will BE
+2]decide the schema
+3]they have to provide the documentation for the API to the FE people
+
+***Multi user Blog application***
+
+--where multiple users can create/read/update & Delete the Blog
+
+
+*backend*
+
+APi endpoints:-
+
+post/signup --{email,password}-ankur 
+post/login--{email,password}-ankur login
+
+//protective endpoints
+get     /blogs
+post    /blogs/create
+put     /blogs/edit/:blogID
+Delete  /blogs/delete/:blogID

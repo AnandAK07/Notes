@@ -1,0 +1,60 @@
+MongoDB is a document-oriented NoSQL database designed for high performance, scalability, and developer agility.
+unstructured data,used for application
+
+
+7) Why MongoDB is the best NoSQL database?
+MongoDB is the best NoSQL database due to the following features:
+
+High Performance
+High Availability
+Easily Scalable
+Rich Query Language
+Document Oriented
+
+Flexible Schema:
+MongoDB is a schema-less database, allowing documents in a collection to have different fields and structures. This flexibility is useful for accommodating changes in data models without requiring a predefined schema.
+
+Scalability: 
+MongoDB is designed to scale horizontally by distributing data across multiple servers, which enables it to handle large volumes of data and high throughput applications.
+
+Rich Query Language: MongoDB supports a powerful query language that includes features like aggregation pipelines, text search, geospatial queries, and more.
+
+Community Support: MongoDB has a large and active community of developers, which means there are plenty of resources, tutorials, and community-driven tools available.
+
+dis
+-Memory Usage:
+ MongoDB may consume a significant amount of memory, especially when dealing with large datasets, which could lead to increased hardware requirements.
+-Complexity:
+While MongoDB is relatively easy to set up and use, managing a distributed MongoDB cluster can be complex, requiring careful configuration and monitoring.
+
+
+Querys
+1. Find all the female users
+Ans =>db.users.find({ gender: "Female" });
+
+2. Find all the female users who speak one of the two languages Kannada, Hindi
+Ans =>db.users.find({ gender : "Female" , $or: [{language: "Hindi"}, {language: "Kannada"}]});
+
+3. Find all the male users who can speak Hindi and female users who can speak Kannada
+Ans => db.users.find({ $or: [{gender: "Male" , language : "Hindi"} , { gender:"Female" , langauage : "Kannada"}]});
+
+4. Find all the users who wear the shirt size S
+Ans => db.users.find({ shirt_size : "S"});
+
+5. Find all the female users who wear the shirt size XL
+Ans => db.users.find({ gender: "Female" , shirt_size: "XL"});
+
+6. Find all the English speaking male users and Hindi speaking female users
+Ans => db.users.find({ $or : [{ gender: "Male" , language:"English"} , { gender : "Female" , language: "Hindi"}]});
+
+7. Find all the male users who can speak Hindi or English and female users who can speak Kannada or German
+Ans => db.users.find({ $or: [{ gender: "Male" , $or: [{language: "Hindi"} , {language: "English"}]},{gender : "Female" , $or: [{ language: "Kannada"} , { language : "German"}]}]});
+
+8. Find all the female users who can speak Bengali who wear shirt size XL and male users who speak German and wear shirt size either L or M
+Ans => db.users.find({$or: [ {gender: "Female" ,language : "Bengali", shirt_size : "XL"},{gender: "Male" , language: "German" , $or: [{shirt_size : "M"} , {shirt_size: "S" }]}]});
+
+9. Find all the female users who speak any of the Indian languages (Hindi, Punjabi, Bengali, Gujarati, Tamil, Malayalam)
+Ans => db.users.find({ gender: "Female" , $or : [ { language: "Hindi"} , {language: "Punjabi"},{language: "Bengali"},{language: "Gujarati"},{language: "Tamil"} ,{language: "Malayalam"}]} );
+
+10. Men who can speak Korean
+Ans => db.users.find({ gender:"Male" ,language: "Korean" });

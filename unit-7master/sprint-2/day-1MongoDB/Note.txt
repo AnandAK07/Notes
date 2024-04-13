@@ -1,0 +1,127 @@
+Database:-
+
+--these are just storage devices
+--pendrive
+--ssd/floppy devices
+--memory cards
+
+====problems====
+--this is not centralised
+--time consuming
+--less storage
+--no Structured data
+
+===solution--we want something which is centralised
+
+--MongoDB -M of the MERN stack
+    -its a software which is Optimised for performing the CRUD operations on the Database
+    -Structured data or data organisation
+    -Data retrieval -mechanism for retrieving data using queries.. CRUD operations is easy
+
+=======queries=====
+        --Update(1,{name:"ankur"})
+        --delete()
+        --find()
+
+3)why do we need database?
+    --10000 data,if you wanted to modify the 5th number line-- to perform CRUD operation on data it really going to be gectic & time consuming.
+
+=======Types of data bases===
+
+-SQL Database
+    
+    Ex:-mysql,Postgres(TABLE)
+    --RDMS(relational database management system)-tables,rows & columns manner
+    --very structured data management
+
+-NoSql database
+    Ex:-MongoDB
+    [
+        {
+            "id": 1,
+            "name": "anand",
+            "age": 25,
+            "city": "Bangalore"
+        },
+        {
+            "id": 2,
+            "name": "anand",
+            "age": 25,
+            "city": "Bangalore"
+        },
+        {
+            "id": 2,
+            "name": "anand",
+            no crash to push less 
+        }
+    ]
+
+3]key-value databases:-
+    --local storage --JSON format
+    --is mostly used for caching.
+    caching--[1+1+2+1+4]+3=9+3=12
+
+4]Graph database
+
+which one is better?
+    -sql or NoSql --Might depend on the use case
+
+why MongoDB?
+    --its very easy for those have already learned the JS
+    --Most startups now a days are using MongoDB
+    --one we will learn or got insigts of  MongoDB we cab be easily learn
+
+
+
+Structured of MongoDB:--
+databases
+    --collections
+        --documents
+
+
+ptweb16
+    --Students
+        --{
+            name:"Anand",
+            city:"blr"
+        },
+        {
+            name:"Ankit",
+            city:"blr"
+        }
+    --consumers
+        --{
+            name:"Anand",
+            city:"blr"
+        },
+        {
+            name:"Ankit",
+            city:"blr"
+        }
+
+    --output data
+        --{
+            name:"Anand",
+            city:"blr"
+        },
+        {
+            name:"Ankit",
+            city:"blr"
+        }
+
+
+MongoDB compass(GUI).which helps us to interact with our data
+
+comands to run on mongoosh
+1.show dbs;
+show all database
+
+2.use db_name --if there is a database present --select that database--if the data not there the new one 
+  use ptweb16 ()
+3.cls =clear terminal
+
+CRUD--[db.collections.command]
+
+db.createColection("collection name:like students")
+
+MongoDB is caseSensitive

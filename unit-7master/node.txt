@@ -1,0 +1,11 @@
+1.What is Node.js?
+Node.js® is an open-source, cross-platform JavaScript runtime environment.
+Node.js is an open-source, server-side JavaScript runtime environment built on Chrome's V8 JavaScript engine. It allows developers to run JavaScript code on the server side
+
+2.Explain the features of Node.js:-
+Asynchronous and event-driven
+Non-blocking I/O
+Single-threaded but highly scalable
+Cross-platform
+Extensive npm ecosystem
+Fast execution speed

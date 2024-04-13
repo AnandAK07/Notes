@@ -1,0 +1,53 @@
+Full stack application - MERN;
+
+
+Backend(SWAGGER)
+1person-Backend/frontend 
+4person-2person frontend 2 person Backend
+
+Frontend
+
+But what if you are working in a team?
+
+So both FE and BE will start simultaneously;
+
+first things the BE devs need to do : 
+1. Decide what the schema is going to be like
+2. Decide on the API endpoint names
+3. Provide the API contract/API endpoints documentation to the FE;
+
+
+
+What are we going to build?
+
+Multi User Blog Application  - Where multiple users can come and read/create/update/delete blogs
+
+*Backend*
+
+API endpoints : 
+
+POST user/signup - {email, password, name}
+POST user/login - {email, password} match? token:
+
+// protected endpoints : 
+
+GET /notes verify the token && user_id
+POST /notes/create
+PATCH  /notes/edit/:blogID
+DELETE /notes/delete/:blogID
+
+
+express-validator
+
+
+Blogs and Users;
+
+Independent - users
+Dependent - blogs;
+
+1. we put user_id/email in blogs
+2. we put blogID in user;
+
+^ 1st option
+
+

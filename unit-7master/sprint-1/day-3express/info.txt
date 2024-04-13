@@ -1,0 +1,18 @@
+Dis of creating the server & API's using the http inbuilt module
+
+1.Complex code -too many if else statements
+2.POST request handling -Complex
+
+MERN 
+ The 'E' in MERN stands for Express;
+
+Express(its just a library):
+It's library that help us create server/API's in an Express way.
+It's built on top of the http module itself
+
+
+Package.json-?
+-contain info about your project
+
+(installation)
+npm init/npm init -y 

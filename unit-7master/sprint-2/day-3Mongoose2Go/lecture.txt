@@ -1,0 +1,69 @@
+Mongoose
+
+
+- There are libraries that help us establish connection between the server/programming language and the Database(MongoDB)
+These Libraries are also called as Object Relational Mapping (ORM) 
+SQL- Sequelize
+- we are going to Mongoose as the library that helps for the above;
+- Mongoose is not the only library, other alternatives : 
+                - Mongodb client : to connect to MongoDB from nodejs
+                - Sequelize : to connect to SQL Databases from nodejs;
+                etc 
+
+
+Mongoose 
+       1. helps us to connect to MongoDB - done
+       2. helps us to create the structure -
+       //{name:'adam',age:'23'}
+       {
+        product:'xyz',
+        price:23
+       }
+       mongoDB is very flexible what ever we want as in 2 diff doc 
+       we would want to store the data that we want to
+       {email,name,password} we want
+       {product,price,url} we don't want
+       //
+
+
+            Model and Schema
+            
+            __v is automatically created by Mongoose
+            for a to maintain version of mongoose to keep as id
+
+       3. Validation
+
+       R                            NE                          MongoDB(Database)
+validation       level 1            level2                      level3
+        can some buypass          distructure only those      Mongoose will help us to store Only that data to store in the MongoDB
+        network tab take url      fields like name age
+       
+       
+       go postman post url 
+           a. When we try to insert more fields than that are in the Schema
+                No error, it'll insert only the fields that are in schema, ignores/trims extra fields
+            
+           b. When we try to insert less fields than that are in the Schema
+               No error, data will be inserted if the missing field is not "required"
+  
+           c. Type : 
+                It Type casts
+                On successfull type cast, no error;
+                when it can't type cast, error
+
+                "22" --> 22. yes can be type caste
+                "twenty one" --> 21. No;
+                101 --> "101". Yes can be type casted, no error
+
+
+                https://chat.openai.com/share/ae23e986-8c14-475b-8e06-396664b98763
+                https://mongoosejs.com/docs/validation.html
+
+
+Mongoose Queries
+
+https://mongoosejs.com/docs/queries.html
+
+Do the update and delete part
+
+while creating the password don't include character but if you have then use URL encoder &decoder

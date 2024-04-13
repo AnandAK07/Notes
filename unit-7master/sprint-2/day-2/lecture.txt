@@ -1,0 +1,205 @@
+1st part is - Mongo CRUD and Advanced
+2nd part is - optional in understanding - database optimization
+
+**1st part** - 
+
+database : 
+         It's NOT just a place where we store data - Pen drive, memory card, CD/DVD/floppy disk, SSD/HDD etc etc;
+         
+
+         CRUD - Creating, reading, updating, deleting
+         Data - we can just store in any file - db.json
+
+
+         When we can perform CRUD on the data stored in a file(db.json), why do we need database? what is it?
+
+         database - It's a software which is optimised for and helps us perform CRUD operations on data
+                  - database management system
+                  - we don't have to write the CRUD logic ourselves
+                  - the logic for CRUD is already written and we just have to write some "syntax" - queries
+                  - hence it is not same as storage
+
+                  db.users.find()
+                  db.users.insertOne()
+
+MongoDB NoSQL
+
+Database 
+        - Collections
+                    - Documents
+
+
+What is the data type of the document?
+
+BSON - Binary JSON:
+https://www.mongodb.com/json-and-bson
+
+
+Keys are also called as fields;
+
+_id gets auto created;
+
+Homework - Find out what this _id consists of?
+In MongoDB, each document stored in a collection requires a unique _id field that acts as a primary key.
+MongoDB driver automatically generates an ObjectId for the _id field. 
+
+CRUD operations
+
+C - db.collection_name.insertOne, insertMany
+R - find, findOne db.users.findOne({email:.....})
+U - updateOne, updateMany - db.users.updateOne({email:...},{$set:{city:"blr"}})
+
+    db.users.updateOne({name : "bob"}, {$set : {city : "Mumbai"}})
+D - deleteOne, deleteMany db.uses.deleteOne({email:....}) db.users.deleteMany()
+
+
+Is MongoDB case sensitive? - yes
+
+ Nihal@gmail.com --> 
+ nihal@gmail.com --> 
+ nihAl@gmail.com ---> 
+        email.trim().toLowerCase() --> nihal@gmail.com
+
+Comparision operators
+
+<
+$lt
+db.users.find({age : {$lt : 20}})
+
+<=
+$lte
+db.users.find({age : {$lte : 23}})
+
+>
+$gt
+
+>=
+$gte
+
+==
+$eq
+db.users.find({city : {$eq : "blr"}}) same as writing db.users.find({city : "blr"})
+
+!=
+$ne;
+db.users.find({city : {$ne : "blr"}})
+
+
+Logical operators : 
+
+$or : if any of the given conditions are matching, it return that document 
+
+db.users.find({$or : [{age : 19}, {name : "albert"}]})
+db.users.find({$or : [{age : {$gt : 22}}, {name : "albert"}, {name : "Bob"}]})
+
+
+$and : only if all the given conditions are matching, it returns that document
+db.users.find({$and : [{age : 23}, {city : "blr"}]})
+
+We can combine different operators
+An example of combining $and and $or : 
+
+db.users.find({$and : [{age : 23}, {$or : [{city : "delhi"}, {city : "blr"}]}]})
+
+Sorting : 
+
+.sort({field : 1/-1})
+-1 = Descending
+1 = Ascending
+
+Descending 
+db.users.find({city : "blr"}).sort({age : -1})
+
+
+Ascending 
+db.users.find({city : "blr"}).sort({age : 1})
+
+Does sorting work for alphabets/characters?
+
+Yes it does work, but it sorts based on the ASCII value of that character
+
+
+Homework - read about how you can sort by characters ignoring the ASCII value
+         - ankur should come before Bob;
+
+
+Limit - limiting
+      - db.users.find({city : "blr"}).limit(3)
+      - Pagination
+
+Projection - 
+
+ projector - projects on the screen;
+
+ You can include fields by using = 1 - ON
+ You can exclude fields by using = 0 - OFF
+
+ db.users.find({city : "blr"}, {_id : 0})
+ db.users.find({matching_Criteria}, {projection Criteria})
+
+
+operations on the key/field 
+
+1. check if a key/field exists 
+    db.users.find({city : {$exists : false}})
+
+2. What if you want to remove a key/field
+
+ I want to remove "age" field from user "arun"
+
+ db.users.updateOne({name : "arun"}, {$unset : {age : ""}})
+
+
+Count 
+.count()
+
+ CHEATSHEET
+ official docs - https://www.mongodb.com/developer/products/mongodb/cheat-sheet/#crud
+
+
+
+------------------------------------------------------------------------------------------------------
+
+Database optimization
+
+1. Indexing : 
+         .find({name : "Bob"}) - TC is O(N)
+
+         .find({_id : "...."}) - Time complexity is O(1)
+
+        
+    _id is indexed by default in MongoDB, hence the TC is O(1)
+
+    "Index Page"?
+
+    Can we index other fields?
+    Yes
+
+     - use "create index" in "indexes" in MongoDB Compass
+     - .createIndex(field : 1)
+
+    which field to index? 
+
+    {
+        _id,
+        name,
+        age,
+        city,
+        aadhar_no,
+        state,
+        mobile_no
+    }
+
+    You will index the field, that is used the most
+    
+  
+    Why not index every field then?
+
+    - Why not index every word in the book?
+
+    1. We wouldn't want the index itself to become so large(like the book itself)
+    2. Writing/Adding new work in the book will be slower, since we would want to add that word in the index too
+
+
+2. Aggregation     - will release video on it on saturday, do read about it
+  

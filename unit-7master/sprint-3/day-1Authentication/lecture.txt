@@ -1,0 +1,53 @@
+1] what is authentication?
+   - who the user claims to be 
+
+2] why authentication?
+   - to keep track record of the data/user
+   - to do further things with authorisation
+
+3] what is the difference between authorisation and authentication?
+    -     
+
+steps in authentication:-
+
+   /register 
+        - post /register
+        -{email,password}=req.body
+        -stores in DB
+        - respond as "registration successfull"
+
+   /login
+    - post /login
+    - {email,password}=req.body
+    - check if that credential is present in the DB or not.
+    - if present ? "login successfull" : "login failed"
+
+
+     //break til 9:03.  
+
+   -protected endpoints
+
+   /reports
+     - email and password-- this is as good as a blank paper xxxxxx
+     - token -- xxxxxx
+     - email+token -- xxxxxx     
+     - Math.Random()-- xxxxx
+
+     --SOLUNTION
+       - for token based approach 
+       - here we will explore JWT(jsonwebtoken)  
+
+
+   //frontend part
+
+    headers:{
+        Authorization:$ {token},
+    }   
+
+     1] on /loginrequest,
+        -if login is succesfull ..we get the token
+        - we will store that token in localstorage
+        - whenever we wanted to explore and protected endpoint we will get the token from local storage. we will 
+           pass the token into the headers .
+
+        -   nihal sir lecture --- https://zoom-lecture-recordings.s3.ap-south-1.amazonaws.com/86114088647/pt-web-13-unit_7_1702996020000 

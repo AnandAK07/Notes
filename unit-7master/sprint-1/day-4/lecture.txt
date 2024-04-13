@@ -1,0 +1,27 @@
+
+
+
+
+Middlewares:
+Advantages of using Express
+1.Faster way of creating the server and API's 
+2.Cleaner code,better then directly using the http modue etc.
+3.It's ecosystem of middlewares
+
+Middlewares:
+
+
+
+
+
+
+Mw is running on the server side not on client
+
+
+Type of MW (for our understanding);
+
+1.Custom mw=middleware where we write our own logic
+            Ex:time
+
+2.express.json(),express.text(),
+router middleware

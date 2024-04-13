@@ -1,0 +1,74 @@
+authorization:-
+
+1] client sending a token
+
+   --client will send in the headers and we will take it out from there
+   -format  "authorization":Bearer {token};
+
+2] making authentication middleware
+
+    - we collect all our logic at one place 
+    - we can use that collected logic as a middleware for some specific endpoints;
+
+app.get("/lectures", authentication, function (req, res) {
+  return res.send("lectures are not accesable");
+});
+
+3] storing the password
+
+  - right now we store the password in the plain text 
+    we should not do that anyone can access it.
+    
+        --plain text-- encrypt our password ----> ecrypted text
+           sujal  --->  encrypted/key ---> xyhfg
+           xyhfg ---> decrypt/key --->  sujal
+
+
+  --pankaj -->encypt password  -- q5iXszxDETguqGWxMQjuTA==   --key--ankur
+
+  --rahul ---encypt password -- UHDRjNs6fsY/5HhmxDWYdw==   --key 321
+
+
+    is encryption is a reversible process? -->  yes
+   
+   solution is HAASHING:----
+          
+       password-->    cup(apple)   --> SHA1 --->  igh(juice) (db)   //sighnup
+           ankur --> sha1  --> ghuyhdgdhf
+
+         //login
+
+                apple --->sha1 --->igh
+
+                suraj----> e10b
+
+                ankur--->c80e7
+
+
+                ---hashing is not reversible
+
+       -- we will hash our password before storing it to the DB. 
+
+       package --> BCRYPT   
+
+
+
+ **** AUTHORISATION******
+
+     - its a process of indentifying ?what access does the user have..
+
+     example:--
+                 --->   student -->>>-not allowed to create lecture
+                                     -not able to upload a lecture 
+                                    - no able to update notes
+                                     -not able to create assignment
+
+                  ---->  teacher ---> - allowed to create lecture
+                                     - able to upload a lecture 
+                                    -able to update notes
+                                     - able to create assignment     
+
+     *role based access Control**
+         steps:- 
+         1] student-
+         2] teacher  
