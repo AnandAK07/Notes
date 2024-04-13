@@ -1,0 +1,53 @@
+{
+  "todos": [
+    {
+      "title": "task1",
+      "status": false,
+      "id": 7
+    },
+    {
+      "title": "task2",
+      "status": false,
+      "id": 8
+    },
+    {
+      "title": "task3",
+      "status": false,
+      "id": 9
+    },
+    {
+      "title": "task4",
+      "status": false,
+      "id": 10
+    },
+    {
+      "title": "",
+      "status": false,
+      "id": 11
+    },
+    {
+      "title": "task5",
+      "status": false,
+      "id": 12
+    },
+    {
+      "title": "task6",
+      "status": false,
+      "id": 13
+    },
+    {
+      "title": "task7",
+      "status": false,
+      "id": 14
+    }
+  ],
+  "userData": [
+    {
+      "name": "nand kumar k",
+      "city": "bangalore",
+      "age": "eaee",
+      "isMarried": "Yes",
+      "id": 1
+    }
+  ]
+}
