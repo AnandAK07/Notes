@@ -1,0 +1,59 @@
+html{
+    font-size:32px;
+}
+@media (max-width:700px){
+    html{
+        font-size: 16px;
+    }
+}
+body{
+    margin: 0 auto;
+}
+.parent{
+    background: #07072f;
+    padding: 50px;
+    width: 80%;
+    margin: 0 auto;
+}
+.child{
+    background: skyblue;
+    /* height: 100px; giving height is bad idea 
+    
+    web is responsive but we with css making it Nonresponsive
+    */
+    /* width: 50%; */
+
+    /* don't confuse count padding then get actul 50%*/
+    padding: 5em;/* 5*16px =80px em is inheretant property looking to the font size all the way up that we not so its take default one 16px/em*/
+    /* em vs rem */
+    /* color: white;
+    font-size: 1rem; */
+}
+
+.btn{
+    font-size: 2rem;
+    padding: 1em 3em;
+    /* padding: 1rem 3rem; not in right proportion u can comment out while in em its cosistent*/
+    background: #000;
+    color: aqua;
+    /* change width 50% to 100% */
+    margin: 1rem;
+    /* margin: 1em; */
+    /* we can see bcs of 1em btn 1-2 width is smaller than 2-3 */
+    /* for margin use rem to have same width always */
+}
+.child{
+    /* width: 100%; */
+        /* width: 100%; it does't count padding  if we give but it takes by its default 100% comment out 100%*/
+}
+
+.call-action{
+    font-size: 10px;
+}
+.btn-small{
+    font-size: 1.5rem;
+}
+.btn-lg{
+    font-size: 3rem;
+}
+/* https://codepen.io/kevinpowell/pen/RKdjXe */
