@@ -1,0 +1,92 @@
+server - it's just another computer which serves;
+
+we need to program our computer for it to serve appropriate response based on the request
+
+SSPL - Javascript in the Node environment
+
+Node inbuilt modules - OS, fs, HTTP
+
+HTTP module of Node
+
+
+
+In general, apart from it being the inbuilt module of node : 
+
+HTTP - Hyper text transfer protocol
+
+Protocol - it's a set of things/rules which are agreed upon;
+
+3 way handshake
+
+1. The client expresses it's intent to connect to the server;
+2. The server acknowledges the intent expressed by the client;
+3. The client proceeds with the request
+
+
+
+HTTP verbs/methods
+
+GET - to get the data from the server;
+POST - to post/add data
+PUT - replaces the data
+PATCH - modifies part of the data
+DELETE - to delete some data on the server
+
+
+http Headers
+- they provide more information about the request or the response;
+
+
+**Benchmarking**
+If we want to benchmark(measure the maximum capacity) of our server, we can do that;
+
+We can use "autocannon" package;
+
+
+npx autocannon url
+npx autocannon http://localhost:8000/lectures
+
+
+const http = require("http")
+const fs = require("fs")
+
+const myserver =  http.createServer((req, res) => {
+                    if(req.method === "GET" && req.url === "/posts"){
+                        res.end("Here are your posts")
+                    }
+                    else if(req.method === "POST" && req.url === "/posts"){
+                        let result = "";
+                        req.on("data", (data) => {
+                            result += data;
+                        })
+
+                        req.on("end", () => {
+                            console.log(result)
+                            res.end("Data received");
+                        })
+                    }
+                    else if(req.url === "/reports"){
+                        res.end("Here are your reports")
+                    }
+                    else if(req.url === "/lectures"){
+                        fs.readFile("./lecture.txt", {encoding : "utf-8"}, (err, data) => {
+                            res.end(data)
+                        })
+                    }
+                    else{
+                        res.end("API working")
+                    }
+})
+
+
+myserver.listen(8000)
+
+
+
+
+//Problem statement
+//Whenever a request comes to our server,in our server,
+// print(console.log) the request URL and the http method
+
+//GET /cart
+//POST /cart

@@ -1,0 +1,31 @@
+MERN
+
+1 person-backend/frontend {swigger doc}
+
+
+4 person-
+        /notes
+        /notes/create
+        /notes/edit
+
+        method/route
+           GET/notes{
+                response
+            notes_id:
+            tag;
+           }
+
+           2-people decide all routes according swigger doc https://petstore.swagger.io/#/
+
+
+           2-people frontend 
+           with mac API
+
+
+1.POST user/signup-{email,pass}-
+2.POST user/login -{email,pass}-match? token:`*******`
+
+3.POST notes/create-create note
+4.GET notes/ -verify the token give the o/p of single user !all whole notes of users&& user_id 
+5.PATCH notes/edit/:noteId -
+6.DELETE notes/delete/:noteId-

@@ -1,0 +1,109 @@
+anand its middle of after req is send & before res is send
+
+
+
+Express built on top of the HTTP 
+
+Will res.end() work in Express? - yes
+
+
+Will res.send() work in the inbuilt HTTP module? - No
+
+Advantages of Express : 
+1. Clean code - easy to debug
+2. Very intuitvie - especially handling the post request;
+3. Express's rich ecosystem of middlewares;
+
+
+
+Middleware - 
+A bunch of code(maybe a function?) which is in the middle of something;
+
+In context of express :  It's just a function, which has access to the request object, response object and 
+                         the "next" function.
+
+                         The "next" function - It's an inbuilt function in express which transfers the control to the next thing/function/middleware etc;
+
+
+For using a middleware, express provides a .use method;
+
+
+
+Unix time - The number of milliseconds passed from Jan 1 1970
+
+
+//write a middleware called as logger, it should print/console the http verb and the endpoint of the request.
+// GET /
+// GET /about
+
+
+//write a middleware called as time_logger, it should log/print : 
+// the time it took for our server to process a request
+
+
+We can have multiple middlewares
+
+app.use(mw2, mw1) 
+^ this is same as below : 
+
+app.use(mw2)
+app.use(mw1)
+
+types(for our understanding) : 
+1. Custom middlewares - where we write our own middleware logic. Eg : logger, time_logger
+
+2. Express inbuilt middleware - these are middlewares which are inbuilt present in express. 
+Eg : express.json() - parses the json which is coming in the req.body;
+     express.text() - parses the text which is coming in the req.body;
+     router middleware - 
+
+
+
+     //10 API endpoints, 4 methods for each route; - 40 API endpoints;
+
+     // GET /orders
+     // POST /orders
+     // PUT /orders/:orderID
+     // DELETE /orders/:orderID
+
+     // GET /cart
+     // POST /cart
+     // PUT /cart/:productID
+     // DELETE /card/:productID
+
+
+3. Third party/external middlewares
+    These are middlewares where the code is written by someone else and published online
+
+    Eg : **cors**, multer(you'll see this while doing the assignment)
+
+
+CORS - Cross Origin Resource Sharing
+
+
+Server - computer which serves(resources)
+
+//anand diff port
+//url is diff client-netlify or serverlocalhost
+//client-localhost & server netlify
+
+Origin - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin
+
+localhost : 3000 and localhost : 8000 are different origins
+app.netlify.com and localhost : 8000 are different origins
+masaischool.com and localhost : 6000 are different origins;
+
+localhost : 8000 and localhost : 8000 are same origins
+
+CORS : 
+When we have different origins, the server by default doesn't allow any requests from different origin;
+That's the default CORS policy;
+We can configure the CORS policy to allow/deny for whichever origins we want to;
+
+https://www.npmjs.com/package/cors
+
+
+
+
+Note : Wherever we are using the middleware using app.use(), the middleware works for all the API endpoints below that;
+^ that's why if we want a middleware to work for all the endpoints, we put it at the top;

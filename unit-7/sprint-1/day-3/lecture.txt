@@ -1,0 +1,52 @@
+Express - fast, quick
+
+It's a very popular library
+
+It's so popular that it has earned it's name in the stack name itself
+MERN - E in MERN stands for Express;
+
+
+It's built on top of the HTTP module of node itself;
+
+
+Using HTTP module : 
+10 API endpoints - 4 -> 40
+
+
+
+Advantages of express 
+1. Clean code
+2. It's very intuitive
+3. Express's rich ecosystem of Middlewares;
+
+
+
+package.json 
+
+
+route/path/endpoints - same just interchangeable words
+
+
+
+nodemon - installation
+
+
+CRUD 
+we did create and read;
+update and delete - do it post class
+and try replacing your mock json server in your existing projects with the express server and db.json;
+
+
+Query and Params
+
+Query : 
+course.masaischool.com?lecture=1234
+https://www.google.com/search?q=gemini
+req.query;
+
+
+Params : 
+req.params
+course.masaischool.com/lectures/12345
+api.xyz.com/users/12
+https://jsonplaceholder.typicode.com/posts/6
