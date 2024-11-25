@@ -1,8 +1,8 @@
 // const {sub,add}=require("./cal")
-// // const {add,sub}=require("./cal")
-// // const [sub,add]=require("./cal")XX
-// // const [add,sub]=require("./cal")
-// // index matter not order in array
+// const {add,sub}=require("./cal")
+// const [sub,add]=require("./cal")XX
+// const [add,sub]=require("./cal")
+// index matter not order in array
 
 // const result=add(2,3)
 // const subt=sub(3,2)
