@@ -6,16 +6,24 @@ setTimeout(function cb(){
     console.log('callback');
 },5000)
 
-console.log("End");
+let startTime=new Date().getTime();
+let endTime=startTime;
 
-//2code
-console.log("Start");
-
-setTimeout(function cb(){
-    console.log('callback');
-},0)
+while(endTime<startTime+10000){
+   endTime=new Date().getTime();
+}
 
 console.log("End");
+
+// //2code
+// console.log("Start");
+
+// setTimeout(function cb(){
+//     console.log('callback');
+// },0)
+
+// console.log("End");
+
 
 
 
